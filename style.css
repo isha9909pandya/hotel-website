@@ -1,0 +1,712 @@
+/* TABLE OF CONTENTS */
+/* ------------------
+1. General
+2. Navbar
+3. Slider
+4. About
+5. Rooms
+6. Dining
+7. Team
+8. Gallery
+9. Offers
+10. Blog
+11. Footer
+-------------------- */
+
+/* 1 General */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.swiper-slide{
+  .about_wrapper {
+  background: linear-gradient(rgba(26, 26, 26, 0.5), rgba(26, 26, 26, 0.5)), url('../images/taj-about-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+}
+
+:root {
+  /* Background Color */
+  --primary-color: #1a1a1a; /* Dark Taj accent */
+  --secondary-color: #d4a017; /* Taj gold */
+  --bg-color: #f8f4e9; /* Light cream background */
+  --bg-white: #fff;
+  --bg-black: #000;
+
+  /* Text Style */
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Playfair Display", serif;
+  --primary-text: #1a1a1a;
+  --secondary-text: #d4a017;
+  --text-white: #fff;
+  --text-black: #151515;
+  --text-gray: #e4e4e4;
+}
+
+body {
+  font-family: var(--primary-font);
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.375rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+section {
+  padding: 4rem 0;
+}
+
+.main-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-white);
+  background-color: var(--secondary-color);
+  border: 0.0625rem solid var(--secondary-color);
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.main-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 4rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 1.5rem;
+  font-family: var(--secondary-font);
+}
+
+h3 {
+  margin-bottom: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--primary-text);
+  font-family: var(--secondary-font);
+}
+
+h3 span {
+  color: var(--secondary-text);
+}
+
+h5 {
+  font-size: 1.25rem;
+  color: var(--primary-text);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-family: var(--secondary-font);
+}
+
+h6 {
+  font-size: 0.875rem;
+  color: var(--secondary-text);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: var(--primary-font);
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text-black);
+  line-height: 1.75rem;
+}
+
+.section-title::after {
+  content: "";
+  background-image: url("../images/taj-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  margin: 0.5rem auto;
+  height: 1rem;
+  width: 50px;
+}
+
+/* Custom Cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.cursor:hover {
+  background: rgba(212, 160, 23, 0.2);
+  transform: scale(1.5);
+}
+
+/* 2 Navbar */
+.header_wrapper .navbar {
+  padding: 1rem 0;
+  background-color: var(--primary-color);
+  box-shadow: 0 0.5rem 0.375rem rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+
+.header_wrapper .navbar-toggler {
+  border: 0;
+  color: var(--text-white);
+  line-height: 2;
+}
+
+.header_wrapper .navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.header_wrapper .nav-item {
+  margin: 0 1rem;
+}
+
+.header_wrapper .nav-item .nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-white);
+  font-family: var(--secondary-font);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.header_wrapper .nav-item .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+
+.header_wrapper .nav-item .nav-link.active,
+.header_wrapper .nav-item .nav-link:hover {
+  color: var(--secondary-text);
+}
+
+.header_wrapper .nav-item .nav-link.active::after,
+.header_wrapper .nav-item .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar.header-scrolled {
+  background-color: rgba(26, 26, 26, 0.95);
+  animation: fadeInDown 0.5s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  0% { top: -30%; }
+  100% { top: 0; }
+}
+
+/* 3 Slider */
+.banner_wrapper {
+  height: 600px;
+  overflow: hidden;
+}
+
+.banner_wrapper .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.banner_wrapper .swiper-slide {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.banner_wrapper .swiper-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.banner_wrapper .swiper-pagination-bullets .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--bg-white);
+}
+
+.banner_wrapper .swiper .slide-caption {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.banner_wrapper .swiper .slide-caption h1 {
+  font-size: 3rem;
+  opacity: 0;
+}
+
+.banner_wrapper .swiper .slide-caption p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-white);
+  opacity: 0;
+}
+
+.booking-area {
+  background: var(--bg-white);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  margin-top: -60px;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.booking-area .form-control,
+.booking-area .form-select {
+  border: 1px solid var(--primary-color);
+  height: 45px;
+  font-size: 0.9rem;
+  color: var(--text-black);
+  font-weight: 400;
+  border-radius: 5px;
+}
+
+.booking-area .form-control:focus,
+.booking-area .form-select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
+  border-color: var(--secondary-color);
+}
+
+/* 4 About */
+.about_wrapper {
+  padding-top: 8rem;
+}
+
+.about_wrapper img {
+  transition: transform 0.5s ease;
+}
+
+.about_wrapper img:hover {
+  transform: scale(1.05);
+}
+
+/* 5 Rooms */
+.room-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.room-item img {
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.room-item:hover img {
+  transform: scale(1.1);
+}
+
+.room-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.room-item:hover::before {
+  opacity: 0.5;
+}
+
+.room-item .room-item-wrap {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  right: 30px;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.room-item .room-content {
+  border: 2px solid var(--text-white);
+  padding: 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+}
+
+.room-item:hover .room-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 6 Dining */
+.service-item-wrap {
+  background-color: var(--bg-color);
+}
+
+.service-menu-area ul li a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.service-menu-area ul li a:hover {
+  transform: translateX(10px);
+}
+
+.service-menu-area ul li a .service-icon {
+  height: 60px;
+  width: 60px;
+  background-color: var(--secondary-color);
+  line-height: 60px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.service-menu-area ul li a .service-icon:hover,
+.service-menu-area ul li a.active .service-icon {
+  background-color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.service-menu-area ul li a p,
+.service-menu-area ul li a h5 {
+  color: var(--primary-text);
+}
+
+.service-menu-area ul li a p span {
+  color: var(--secondary-text);
+}
+
+.counter {
+  background-image: url("../images/taj-counter-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  padding: 4rem 0;
+  position: relative;
+}
+
+.counter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.counter h1,
+.counter p {
+  position: relative;
+  z-index: 2;
+  color: var(--text-white);
+}
+
+/* 7 Team */
+.team_wrapper .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.team_wrapper .team-info {
+  background-color: var(--secondary-color);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.team_wrapper .card:hover .team-info {
+  transform: translateY(0);
+}
+
+.team_wrapper .team-info .social-network {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.team_wrapper .team-info .social-network li a {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  color: var(--text-white);
+  border: 1px solid var(--text-white);
+  margin: 0 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.team_wrapper .team-info .social-network li a:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* 8 Gallery */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-item:hover::before {
+  opacity: 0.6;
+}
+
+/* 9 Offers */
+.price_wrapper .card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.price_wrapper .card:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+.price_wrapper .card:hover h3,
+.price_wrapper .card:hover h5,
+.price_wrapper .card:hover p {
+  color: var(--text-white);
+}
+
+.price_wrapper .card:hover .main-btn {
+  color: var(--text-white);
+  border-color: var(--text-white);
+}
+
+/* 10 Blog */
+.blog-content {
+  margin: -4rem 0 0 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.blog-content:hover {
+  transform: translateY(-5px);
+}
+
+.our-partner-slider {
+  background-color: var(--bg-color);
+  padding: 2rem 0;
+}
+
+/* 11 Footer */
+.footer_wrapper {
+  background-color: var(--primary-color);
+  color: var(--text-gray);
+}
+
+.footer_wrapper h5 {
+  colorfang: var(--text-white);
+  margin-bottom: 1.5rem;
+}
+
+.footer_wrapper .contact-info li a {
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+.footer_wrapper .contact-info li a:hover {
+  color: var(--text-white);
+}
+
+.footer_wrapper .link-widget li a {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.footer_wrapper .link-widget li a::before {
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.footer_wrapper .link-widget li a:hover {
+  color: var(--secondary-text);
+  margin-left: 0.5rem;
+}
+
+.footer_wrapper .social-network a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-gray);
+  border: 1px solid var(--text-gray);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.footer_wrapper .social-network a:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--text-white);
+  transform: translateY(-3px);
+}
+
+.footer_wrapper .form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(212, 160, 23, 0.5);
+}
+
+.footer_wrapper .copyright-section {
+  background-color: var(--bg-black);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer_wrapper .copyright-section a {
+  color: var(--secondary-text);
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+  }
+
+  .main-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1.5rem;
+  }
+
+  .booking-area {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 2rem 0;
+  }
+
+  .header_wrapper .menu-navbar-nav {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .banner_wrapper {
+    height: 400px;
+  }
+
+  .about_wrapper {
+    padding-top: 6rem;
+  }
+
+  .service-menu-area ul li {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
+
+  .blog-content {
+    margin: 0;
+  }
+
+  .footer_wrapper > div {
+    padding: 0 1rem;
+  }
+}
